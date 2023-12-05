@@ -1,4 +1,4 @@
-# <u>Education-Projects</u>
-This repository includes all code/research papers of my academic course projects.
+# <u>Personal-Projects</u>
+This repository includes all code/research papers of my personal projects.
 
-These range from my Undergrad Capstone Project to my very Last project in my Masters program
+These are all my projects for showcasing my DS and ML projects
