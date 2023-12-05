@@ -1,4 +1,3 @@
-# <u>Education-Projects</u>
-This repository includes all code/research papers of my academic course projects.
-
-These range from my Undergrad Capstone Project to my very Last project in my Masters program
+# <u>IRIS</u>
+IRIS.ipynb -> do logisticRegression for the IRIS dataset to get 100% accuracy
+iris.py -> streamlit app for visualizing iris dataset
