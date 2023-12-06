@@ -1,4 +1,6 @@
-# <u>Personal-Projects</u>
-This repository includes all code/research papers of my personal projects.
-
-These are all my projects for showcasing my DS and ML projects
+# <u>Black Friday Sales</u>
+<ol>
+  <li>Black Friday Sales where predicted sales using Random Forest Regression, Tried using ADABOOST, KNN etc but Colab ran out of memory time</li>
+  <li>Contains Train/Test Data</li>
+  <li>Added a py file for streamlit</li>
+</ol>
