@@ -4,13 +4,13 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn import metrics
-
+#c:/Users/Akhilesh Datar/Desktop/blackFriday/test.csv
 #import os
 #print(os.getcwd())
 
 # Load the data
-train = pd.read_csv('c:/Users/Akhilesh Datar/Desktop/blackFriday/train.csv')
-test = pd.read_csv('c:/Users/Akhilesh Datar/Desktop/blackFriday/test.csv')
+train = pd.read_csv('train.csv')
+test = pd.read_csv('test.csv')
 
 def prepare(*args):
     for df in args:
