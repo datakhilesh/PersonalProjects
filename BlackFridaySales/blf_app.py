@@ -41,7 +41,7 @@ X = pd.get_dummies(train[features])
 y = train.Purchase
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.02, random_state=1)
 
 # Train a Random Forest model
 rf2 = RandomForestRegressor(random_state=1)
