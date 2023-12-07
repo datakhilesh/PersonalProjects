@@ -8,7 +8,6 @@ Original file is located at
 """
 
 #!pip install streamlit
-export SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
 import streamlit as st
 import pandas as pd
 from sklearn import datasets
