@@ -1,7 +1,2 @@
-altair
-numpy
-pandas
-pydeck
 streamlit
-scikit-learn
-datasets
+hugchat==0.0.8
