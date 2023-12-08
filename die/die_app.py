@@ -51,7 +51,7 @@ with col1 :
 with col2 :
   Age = st.number_input('Enter the Age value')
  
- model_diabetes = pickle.load(open("die/model_die.pkl", 'rb')) 
+model_diabetes = pickle.load(open("die/model_die.pkl", 'rb')) 
 # Prediction
 diabetes_diagnosis = ''
 
