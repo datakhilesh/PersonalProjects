@@ -4,6 +4,7 @@ import streamlit as st
 import numpy as np
 
 # Load model
+
 #die/model_die.pkl
 import pickle
 #load_clf = pickle.load(open("PENG/penguins_clf.pkl", 'rb'))
@@ -51,7 +52,7 @@ with col1 :
 with col2 :
   Age = st.number_input('Enter the Age value')
  
-model_diabetes = pickle.load(open("die/model_die.pkl", 'rb')) 
+model_diabetes = pickle.load(open("die/model_die.pkl", 'rb'))
 # Prediction
 diabetes_diagnosis = ''
 
