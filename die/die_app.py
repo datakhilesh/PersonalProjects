@@ -5,7 +5,7 @@ import numpy as np
 
 # Load model
 #die/model_die.pkl
-model_diabetes = pickle.load(open('die/model_die.pkl', 'rb'))
+model_diabetes = pickle.load(open("die/model_die.pkl", 'rb'))
 
 #"C:\Users\Akhilesh Datar\Desktop\die\diabetes.csv"
 
