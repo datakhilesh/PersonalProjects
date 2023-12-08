@@ -1,10 +1,12 @@
 # importing Important Liberaries
-import pickle
+
 import streamlit as st
 import numpy as np
 
 # Load model
 #die/model_die.pkl
+import pickle
+#load_clf = pickle.load(open("PENG/penguins_clf.pkl", 'rb'))
 model_diabetes = pickle.load(open("die/model_die.pkl", 'rb'))
 
 #"C:\Users\Akhilesh Datar\Desktop\die\diabetes.csv"
