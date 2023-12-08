@@ -4,7 +4,8 @@ import streamlit as st
 import numpy as np
 
 # Load model
-model_diabetes = pickle.load(open('model_die.pkl', 'rb'))
+#die/model_die.pkl
+model_diabetes = pickle.load(open('die/model_die.pkl', 'rb'))
 
 #"C:\Users\Akhilesh Datar\Desktop\die\diabetes.csv"
 
@@ -12,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-df = pd.read_csv("C:/Users/Akhilesh Datar/Desktop/die/diabetes.csv")
+df = pd.read_csv("die/diabetes.csv")
 # Create a Seaborn correlation plot
 plot = sns.heatmap(df.corr(), annot=True)
  
