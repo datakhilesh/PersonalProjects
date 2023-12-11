@@ -38,9 +38,7 @@ from sklearn.ensemble import RandomForestClassifier
 from zipfile import ZipFile
 
 with ZipFile('diamond/diamond_clf.zip', 'r') as f:
-
-#extract in current directory
-f.extractall()
+    f.extractall()
 
 
 penguins_raw = pd.read_csv("diamond/diamonds.csv")
