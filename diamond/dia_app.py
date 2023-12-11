@@ -34,9 +34,17 @@ warnings.filterwarnings("ignore")
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 
+#import zipfile module
+from zipfile import ZipFile
 
-penguins_raw = pd.read_csv("C:/Users/Akhilesh Datar/Desktop/streamlit/sentiment/diamonds.csv")
-raw = pd.read_csv("C:/Users/Akhilesh Datar/Desktop/streamlit/sentiment/diamonds.csv")
+with ZipFile('diamond/diamond_clf.zip', 'r') as f:
+
+#extract in current directory
+f.extractall()
+
+
+penguins_raw = pd.read_csv("diamond/diamonds.csv")
+raw = pd.read_csv("diamond/diamonds.csv")
 
 st.dataframe(raw)
 penguins = penguins_raw.drop(columns=['price','Unnamed: 0'])
@@ -115,7 +123,7 @@ sns.heatmap(df.corr(), annot=True, cmap="flare")
 plt.title("Correlation Heatmap", fontsize=16)
 st.pyplot(plt)
 
-model_diabetes = pickle.load(open("C:/Users/Akhilesh Datar/Desktop/streamlit/sentiment/diamond_clf.pkl", 'rb'))
+model_diabetes = pickle.load(open("diamond/diamond_clf.pkl", 'rb'))
 # Prediction
 diabetes_diagnosis = ''
 
