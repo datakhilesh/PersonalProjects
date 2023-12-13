@@ -1,4 +1,7 @@
 streamlit
 pandas
-seaborn
-scikit-learn
+wordcloud
+io
+base64
+PyPDF2
+docx2txt
