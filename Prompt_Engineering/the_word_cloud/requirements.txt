@@ -1,7 +1,6 @@
 streamlit
 pandas
 wordcloud
-io
 base64
 PyPDF2
 docx2txt
