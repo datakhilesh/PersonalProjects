@@ -1,11 +1,9 @@
 import openai
 import streamlit as st
 
-# Set the OpenAI API key directly in the code
-openai.api_key ="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"
+st.title("ChatGPT-like clone")
 
-# Initialize Streamlit app
-st.title("ChatGpt's cousin")
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -13,18 +11,17 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat history
+# loop for showing chat
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Get user input
+# Code runs when a new user input comes
 if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Generate assistant response
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
@@ -39,6 +36,4 @@ if prompt := st.chat_input("What is up?"):
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-    
-    # Save assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": full_response})
