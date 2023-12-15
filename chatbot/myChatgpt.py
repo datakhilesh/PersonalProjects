@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 
 # Set the OpenAI API key directly in the code
-openai.api_key = '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'
+openai.api_key =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
 
 # Initialize Streamlit app
 st.title("ChatGpt's cousin")
