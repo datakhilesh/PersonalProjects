@@ -42,7 +42,7 @@ def main():
                     forecast_values = forecast(time_series_data, forecast_period)
 
                     # Display forecast
-                    st.line_chart(pd.Series(forecast_values, index=pd.date_range(start=time_series_data.index[-1], periods=forecast_period + 1)[1:]))
+                    st.line_chart(pd.Series(forecast_values, index=pd.RangeIndex(start=time_series_data.index[-1].value, periods=forecast_period + 1)[1:]))
                     st.success("Forecast generated successfully!")
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
