@@ -1,55 +1,45 @@
-# app.py
+# sentiment_analysis_app.py
 import streamlit as st
+from textblob import TextBlob
 import pandas as pd
-from pandas import to_datetime, RangeIndex, DatetimeIndex, Period
-from statsmodels.tsa.holtwinters import ExponentialSmoothing
-
-# Function for forecasting using Holt-Winters method
-def forecast(data, forecast_period=10):
-    model = ExponentialSmoothing(data, seasonal='add', seasonal_periods=12)
-    fitted_model = model.fit()
-    forecast_values = fitted_model.forecast(steps=forecast_period)
-    return forecast_values
 
 # Streamlit app
 def main():
-    st.title("Time Series Forecasting App")
+    st.title("Sentiment Analysis App")
 
     # CSV URL input
-    csv_url = st.text_input("Enter the CSV URL:", "https://raw.githubusercontent.com/datasets/covid-19/main/data/time-series-19-covid-combined.csv")
+    csv_url = st.text_input("Enter the CSV URL:", "https://raw.githubusercontent.com/datasets/sentiment140/master/data/training.1600000.processed.noemoticon.csv")
 
     if csv_url:
         try:
             # Load data from CSV URL
-            data = pd.read_csv(csv_url)
+            data = pd.read_csv(csv_url, encoding='latin-1', header=None, names=['target', 'ids', 'date', 'flag', 'user', 'text'])
             st.subheader("Data Loaded from CSV URL:")
             st.write(data.head())
 
-            # Visualization
-            st.subheader("Time Series Visualization:")
-            st.line_chart(data.set_index('Date'))
+            # Sentiment Analysis
+            st.subheader("Sentiment Analysis:")
+            text_input = st.text_area("Enter text for sentiment analysis:")
+            if st.button("Analyze Sentiment"):
+                if text_input:
+                    # Perform sentiment analysis using TextBlob
+                    blob = TextBlob(text_input)
+                    sentiment_score = blob.sentiment.polarity
 
-            # Forecasting
-            st.subheader("Time Series Forecasting:")
-            forecast_period = st.number_input("Enter the number of periods to forecast:", min_value=1, value=10)
+                    # Display result
+                    st.write(f"Sentiment Score: {sentiment_score}")
 
-            if st.button("Generate Forecast"):
-                st.info("Forecasting in progress...")
-                try:
-                    # Extract time series data
-                    time_series_data = data.set_index('Date').iloc[:, 0]
-
-                    # Perform forecasting
-                    forecast_values = forecast(time_series_data, forecast_period)
-
-                    # Display forecast
-                    st.line_chart(pd.Series(forecast_values, index=pd.RangeIndex(start=time_series_data.index[-1].value, periods=forecast_period + 1)[1:]))
-                    st.success("Forecast generated successfully!")
-                except Exception as e:
-                    st.error(f"An error occurred: {e}")
+                    # Categorize sentiment
+                    if sentiment_score > 0:
+                        st.success("Positive Sentiment")
+                    elif sentiment_score < 0:
+                        st.error("Negative Sentiment")
+                    else:
+                        st.info("Neutral Sentiment")
+                else:
+                    st.warning("Please enter text for sentiment analysis.")
         except Exception as e:
             st.error(f"Error loading data from CSV URL: {e}")
 
 if __name__ == "__main__":
     main()
-#ff
