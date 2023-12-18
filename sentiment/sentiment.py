@@ -5,7 +5,7 @@ import streamlit as st
 import pickle
 
 # load model
-model = pickle.load(open("C:/Users/Akhilesh Datar/Desktop/streamlit/sentiment/sentiment_analysis.pkl", 'rb'))
+model = pickle.load(open("sentiment/sentiment_analysis.pkl", 'rb'))
 
 # create title
 st.title('Sentiment Analysis Model')
