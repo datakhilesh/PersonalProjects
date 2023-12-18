@@ -1,9 +1,11 @@
-import streamlit as st
-
+# Install required modules
 try:
-    import pickle
+    import streamlit
 except ModuleNotFoundError:
-    st.error("The 'pickle' module is required but not found. Please install it using 'pip install pickle-mixin'.")
+    !pip install streamlit
+    import streamlit
+
+import pickle
 
 model_filepath = "sentiment/sentiment_analysis.pkl"
 
@@ -13,18 +15,14 @@ try:
         st.title('Sentiment Analysis Model')
         review = st.text_input('Enter your review:')
         submit = st.button('Predict')
-
-        if submit and review:
+        if submit:
             prediction = model.predict([review])
-            if prediction[0] == 'positive':
-                st.success('Positive Review')
-            else:
-                st.warning('Negative Review')
-        elif submit:
-            st.warning('Please enter a review before predicting.')
-
+        if prediction[0] == 'positive':
+            st.success('Positive Review')
+        else:
+            st.warning('Negative Review')
         print("Model loaded successfully.")
 except FileNotFoundError:
-    st.error(f"Error: Model file not found at {model_filepath}.")
+    print(f"Error: Model file not found at {model_filepath}.")
 except Exception as e:
-    st.error(f"An error occurred while loading the model: {e}")
+    print(f"An error occurred while loading the model: {e}")
