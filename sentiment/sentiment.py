@@ -4,8 +4,16 @@
 import streamlit as st
 import pickle
 
-# load model
-model = pickle.load(open("sentiment/sentiment_analysis.pkl", 'rb'))
+model_filepath = "sentiment/sentiment_analysis.pkl"
+
+try:
+    with open(model_filepath, 'rb') as model_file:
+        model = pickle.load(model_file)
+    print("Model loaded successfully.")
+except FileNotFoundError:
+    print(f"Error: Model file not found at {model_filepath}.")
+except Exception as e:
+    print(f"An error occurred while loading the model: {e}")
 
 # create title
 st.title('Sentiment Analysis Model')
