@@ -2,7 +2,7 @@
 try:
     import streamlit
 except ModuleNotFoundError:
-    !pip install streamlit
+    #!pip install streamlit
     import streamlit
 
 import pickle
