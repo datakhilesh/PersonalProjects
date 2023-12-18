@@ -1,26 +1,26 @@
-# pip install -U streamlit
-# streamlit run app.py
-
 import streamlit as st
 import pickle
 
-# load model
-model = pickle.load(open('sentiment/sentiment_analysis.pkl', 'rb'))
+model_filepath = "sentiment/sentiment_analysis.pkl"
 
-# create title
-st.title('Sentiment Analysis Model')
+try:
+    with open(model_filepath, 'rb') as model_file:
+        model = pickle.load(model_file)
+        st.title('Sentiment Analysis Model')
+        review = st.text_input('Enter your review:')
+        submit = st.button('Predict')
 
-review = st.text_input('Enter your review:')
+        if submit and review:
+            prediction = model.predict([review])
+            if prediction[0] == 'positive':
+                st.success('Positive Review')
+            else:
+                st.warning('Negative Review')
+        elif submit:
+            st.warning('Please enter a review before predicting.')
 
-submit = st.button('Predict')
-
-if submit:
-    prediction = model.predict([review])
-
-    # print(prediction)
-    # st.write(prediction)
-
-    if prediction[0] == 'positive':
-        st.success('Positive Review')
-    else:
-        st.warning('Negative Review')
+        st.text("Model loaded successfully.")
+except FileNotFoundError:
+    st.error(f"Error: Model file not found at {model_filepath}. Please check the file path.")
+except Exception as e:
+    st.error(f"An error occurred while loading the model: {e}")
