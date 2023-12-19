@@ -1,4 +1,4 @@
-streamlit
-fbprophet==0.7.1
+prophet==1.0.1
 yfinance==0.1.64
 plotly==5.3.1
+streamlit
