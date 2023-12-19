@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 from datetime import date
 import yfinance as yf
@@ -11,11 +10,11 @@ START = "2015-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
 # Streamlit app title
-st.title('Stock Forecast App')
+st.title('Stock Price Prediction App')
 
 # Stock selection dropdown
-stocks = ('GOOGL', 'AAPL', 'AMZN')
-selected_stock = st.selectbox('Select stock for prediction', stocks)
+stocks = {'GOOGL': 'GOOGL', 'AAPL': 'AAPL', 'AMZN': 'AMZN'}
+selected_stock = st.selectbox('Select stock for prediction', list(stocks.keys()))
 
 # Number of years for prediction
 n_years = st.slider('Years of prediction:', 1, 4)
@@ -30,7 +29,7 @@ def load_data(ticker):
 
 # Load stock data
 data_load_state = st.text('Loading data...')
-data = load_data(selected_stock)
+data = load_data(stocks[selected_stock])
 data_load_state.text('Loading data... done!')
 
 # Display raw data
@@ -61,4 +60,10 @@ forecast = m.predict(future)
 st.subheader('Forecast data')
 st.write(forecast.tail())
 
-st.write(f'Forecast plot for {n_years} years
+st.write(f'Forecast plot for {n_years} years')
+fig1 = plot_plotly(m, forecast)
+st.plotly_chart(fig1)
+
+st.write("Forecast components")
+fig2 = m.plot_components(forecast)
+st.write(fig2)
