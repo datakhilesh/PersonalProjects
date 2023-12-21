@@ -15,7 +15,7 @@ number3 = st.sidebar.slider("Number 3", 0.0, 10.0, 5.0)
 number4 = st.sidebar.slider("Number 4", 0.0, 10.0, 5.0)
 
 # Organize user input into a nested list
-nested_list = [[number1, number2, number3, number]]
+nested_list = [[number1, number2, number3, number4]]
 load_clf = pickle.load(open("IRIS/iris_model.pkl", 'rb'))
 
 try:
