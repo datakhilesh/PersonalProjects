@@ -16,7 +16,7 @@ number4 = st.sidebar.slider("Number 4", 0.0, 10.0, 5.0)
 
 # Organize user input into a nested list
 nested_list = [[number1, number2, number3, number4]]
-load_clf = pickle.load(open("IRIS/iris_model.pkl", 'rb'))
+#load_clf = pickle.load(open("IRIS/iris_model.pkl", 'rb'))
 
 try:
     # Load the Iris dataset
@@ -29,6 +29,7 @@ try:
         gg = [[2.0,3,4,2.4,3.6]]
         ff = clf.predict(gg)
         st.write(ff)
+        
 
     st.write("Model loaded successfully")
 
