@@ -18,6 +18,41 @@ number4 = st.sidebar.slider("Number 4", 0.0, 10.0, 5.0)
 nested_list = [[number1, number2, number3, number4]]
 #load_clf = pickle.load(open("IRIS/iris_model.pkl", 'rb'))
 
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+#from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+data = iris.data
+target = iris.target
+feature_names = iris.feature_names
+
+# Streamlit UI
+st.title("Iris Dataset Visualization")
+st.sidebar.header("Visualization Settings")
+
+# Checkbox for heatmap
+show_heatmap = st.sidebar.checkbox("Show Heatmap")
+
+# Checkbox for scatter plot
+show_scatter_plot = st.sidebar.checkbox("Show Scatter Plot")
+
+# Display selected visualizations
+if show_heatmap:
+    st.subheader("Correlation Heatmap")
+    correlation_matrix = sns.heatmap(data.corr(), annot=True, cmap="coolwarm")
+    st.pyplot()
+
+if show_scatter_plot:
+    st.subheader("Scatter Plot")
+    selected_feature = st.sidebar.selectbox("Select Feature for X-axis", feature_names)
+    sns.scatterplot(x=data[:, feature_names.index(selected_feature)], y=target, hue=target)
+    plt.xlabel(selected_feature)
+    plt.ylabel("Target")
+    st.pyplot()
+
 try:
     # Load the Iris dataset
     iris = load_iris()
