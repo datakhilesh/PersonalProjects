@@ -24,7 +24,7 @@ try:
     X, y = iris.data, iris.target
 
     # Load the model
-    with open('IRIS/iris_model.pkl', 'rb') as model_file:
+    with open('IRIS/iris_mod.pkl', 'rb') as model_file:
         clf = pickle.load(model_file)
         gg = [[2.0,3.4,2.4,3.6]]
         ff = clf.predict(nested_list)
