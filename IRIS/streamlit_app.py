@@ -28,6 +28,12 @@ try:
         clf = pickle.load(model_file)
         gg = [[2.0,3.4,2.4,3.6]]
         ff = clf.predict(nested_list)
+        if ff == 0:
+            st.write('sucks')
+        elif ff == 1:
+            st.write('dumbass')
+        else:
+            st.write('lame')
         st.write(ff)
         
 
