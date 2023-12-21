@@ -4,7 +4,8 @@ import pickle
 import numpy as np
 
 # Load the model from the .pkl file
-with open("iris_model.pkl", "rb") as model_file:
+#IRIS/streamlit_app.py
+with open("IRIS/iris_model.pkl", "rb") as model_file:
     loaded_model = pickle.load(model_file)
 
 # Streamlit UI
