@@ -19,7 +19,7 @@ try:
     with open('IRIS/iris_model.pkl', 'rb') as model_file:
         clf = pickle.load(model_file)
 
-    print("Model loaded successfully")
+    st.write("Model loaded successfully")
 
 except Exception as e:
-    print(f"Error loading the model: {e}")
+    st.write("Error loading the model: {e}")
