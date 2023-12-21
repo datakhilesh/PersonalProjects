@@ -43,8 +43,9 @@ show_scatter_plot = st.sidebar.checkbox("Show Scatter Plot")
 if show_heatmap:
     st.subheader("Correlation Heatmap")
     correlation_matrix = np.corrcoef(data, rowvar=False)
-    sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", xticklabels=feature_names, yticklabels=feature_names)
-    st.pyplot()
+    heatmap_fig, ax = plt.subplots()
+    sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", xticklabels=feature_names, yticklabels=feature_names, ax=ax)
+    st.pyplot(heatmap_fig)
 
 if show_scatter_plot:
     st.subheader("Scatter Plot")
