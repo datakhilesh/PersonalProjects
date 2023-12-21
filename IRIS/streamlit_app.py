@@ -1,33 +1,43 @@
-
-import streamlit as st
 import pickle
-import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import load_iris
+import streamlit as st
+import platform
+import sys
 
-# Load the model from the .pkl file
-with open("iris_model.pkl", "rb") as model_file:
-    loaded_model = pickle.load(model_file)
+print("Python Version:", sys.version)
+print("Platform:", platform.platform())
+# ... print other relevant information about your environment
+# Collect user input for four numbers using sliders
+number1 = st.sidebar.slider("Number 1", 0.0, 10.0, 5.0)
+number2 = st.sidebar.slider("Number 2", 0.0, 10.0, 5.0)
+number3 = st.sidebar.slider("Number 3", 0.0, 10.0, 5.0)
+number4 = st.sidebar.slider("Number 4", 0.0, 10.0, 5.0)
 
-# Streamlit UI
-st.title("Iris Flower Prediction App")
-st.sidebar.header("Input Features")
+# Organize user input into a nested list
+nested_list = [[number1, number2, number3, number4]]
+#load_clf = pickle.load(open("IRIS/iris_model.pkl", 'rb'))
 
-# Collect user input features
-user_input = []
-for i in range(4):
-    feature_value = st.sidebar.slider(f"Feature {i+1}", 0.0, 7.0, 3.0)
-    user_input.append(feature_value)
+try:
+    # Load the Iris dataset
+    iris = load_iris()
+    X, y = iris.data, iris.target
 
-# Convert user input to numpy array
-input_array = np.array(user_input).reshape(1, -1)
+    # Load the model
+    with open('IRIS/iris_model.pkl', 'rb') as model_file:
+        clf = pickle.load(model_file)
+        gg = [[2.0,3.4,2.4,3.6]]
+        ff = clf.predict(nested_list)
+        if ff == 0:
+            st.write('sucks')
+        elif ff == 1:
+            st.write('dumbass')
+        else:
+            st.write('lame')
+        st.write(ff)
+        
 
-# Make predictions using the loaded model
-prediction = loaded_model.predict(input_array)
-prediction_proba = loaded_model.predict_proba(input_array)
+    st.write("Model loaded successfully")
 
-# Display results
-st.subheader("Prediction:")
-st.write(f"The model predicts: {prediction[0]}")
-
-st.subheader("Prediction Probabilities:")
-for i, class_label in enumerate(loaded_model.classes_):
-    st.write(f"{class_label}: {prediction_proba[0][i]:.4f}")
+except Exception as e:
+    st.write("Error loading the model: {e}")
