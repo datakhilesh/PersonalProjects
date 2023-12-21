@@ -26,7 +26,7 @@ try:
     # Load the model
     with open('IRIS/iris_model.pkl', 'rb') as model_file:
         clf = pickle.load(model_file)
-        gg = [[2.0,3,4,2.4,3.6]]
+        gg = [[2.0,3.4,2.4,3.6]]
         ff = clf.predict(gg)
         st.write(ff)
         
