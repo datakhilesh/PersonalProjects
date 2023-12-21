@@ -2,6 +2,14 @@ import pickle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_iris
 
+import platform
+import sys
+
+print("Python Version:", sys.version)
+print("Platform:", platform.platform())
+# ... print other relevant information about your environment
+
+
 try:
     # Load the Iris dataset
     iris = load_iris()
