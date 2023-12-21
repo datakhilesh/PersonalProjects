@@ -4,7 +4,7 @@ from sklearn.datasets import load_iris
 import streamlit as st
 import platform
 import sys
-
+import numpy as np
 print("Python Version:", sys.version)
 print("Platform:", platform.platform())
 # ... print other relevant information about your environment
