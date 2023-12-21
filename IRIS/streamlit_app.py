@@ -42,7 +42,8 @@ show_scatter_plot = st.sidebar.checkbox("Show Scatter Plot")
 # Display selected visualizations
 if show_heatmap:
     st.subheader("Correlation Heatmap")
-    correlation_matrix = sns.heatmap(data.corr(), annot=True, cmap="coolwarm")
+    correlation_matrix = np.corrcoef(data, rowvar=False)
+    sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", xticklabels=feature_names, yticklabels=feature_names)
     st.pyplot()
 
 if show_scatter_plot:
