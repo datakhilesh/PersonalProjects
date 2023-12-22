@@ -7,6 +7,29 @@ from sklearn import preprocessing
 label_encoder = preprocessing.LabelEncoder() 
 import numpy as np
 
+
+# Title and Introduction
+st.title("Factors Influencing Health Insurance Prices")
+st.write("Many factors that affect how much you pay for health insurance are not within your control. Nonetheless, it's good to have an understanding of what they are.")
+
+# Factors List
+st.subheader("Factors Affecting Health Insurance Premiums")
+factors_list = [
+    "Age: Age of the primary beneficiary",
+    "Sex: Gender of the insurance contractor (Female/Male)",
+    "BMI: Body Mass Index, an objective index of body weight (kg / m^2)",
+    "Children: Number of children covered by health insurance / Number of dependents",
+    "Smoker: Smoking status",
+    "Region: The beneficiary's residential area in the US (Northeast, Southeast, Southwest, Northwest)"]
+
+
+# Display the factors list
+for factor in factors_list:
+    st.write(f"- {factor}")
+
+# Conclusion
+st.write("Understanding these factors can help you gain insights into how health insurance premiums are calculated.")
+
 #insurance/insure.py
 data = pd.read_csv('insurance/insurance.csv')
 
