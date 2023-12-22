@@ -86,7 +86,6 @@ if show_predictions:
       with open('insurance/your_model.pkl', 'rb') as model_file:
           loaded_model = pickle.load(model_file)
           st.write("Model Loaded")  # Display a message if the model is loaded successfully
-          st.write("ff")
           
           # Create a DataFrame from the user input
           user_input = pd.DataFrame({'age': [age], 'sex': [sex], 'bmi': [bmi], 'children': [children], 'smoker': [smoker], 'region': [region]})
@@ -100,9 +99,3 @@ if show_predictions:
       loaded_model = None  # Set loaded_model to None if there's an error loading the model
 
   # The rest of your Streamlit app can continue here
-
-  # Example usage of the loaded_model (replace this with your actual app logic)
-  if loaded_model is not None:
-      st.title("Streamlit App with Loaded Model")
-      st.write("Your app logic here...")
-      st.write("FFFFF")
