@@ -28,7 +28,7 @@ for factor in factors_list:
     st.write(f"- {factor}")
 
 # Conclusion
-st.write("Understanding these factors can help you gain insights into how health insurance premiums are calculated.")
+st.write("From This Analysis its very clear that Factors like being a Smoker, Age and BMI have a positive correlation with rise in insurance charges. Southeast is costliest and Southwest is the cheapest.")
 
 #insurance/insure.py
 data = pd.read_csv('insurance/insurance.csv')
