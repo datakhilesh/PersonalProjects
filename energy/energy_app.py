@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 # Streamlit app
 st.title('Energy Performance Model')
-
+#energy/energy_app.py
 
 # Assuming you have an image file named 'default_image.png'
-default_image_path = 'icon.png'
+default_image_path = 'energy/icon.png'
 
 # Streamlit app
 #st.title('Image Display App')
@@ -17,11 +17,11 @@ default_image_path = 'icon.png'
 
 
 # Load the trained Decision Tree model using pickle
-with open('best_decision_tree_model.pkl', 'rb') as file:
+with open('energy/best_decision_tree_model.pkl', 'rb') as file:
     best_tree_reg = pickle.load(file)
 
 #insurance/insure.py
-data = pd.read_csv('energy.csv')
+data = pd.read_csv('energy/energy.csv')
 
 show_data = st.sidebar.checkbox("Raw Data")
 # Display selected visualizations
