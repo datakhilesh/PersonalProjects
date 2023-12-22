@@ -1,0 +1,8 @@
+altair
+numpy
+pandas
+pydeck
+streamlit
+scikit-learn==1.2.2
+datasets
+seaborn
