@@ -8,7 +8,30 @@ label_encoder = preprocessing.LabelEncoder()
 import numpy as np
 
 
-data = pd.read_csv('insurance.csv')
+# Title and Introduction
+st.title("Factors Influencing Health Insurance Prices")
+st.write("Many factors that affect how much you pay for health insurance are not within your control. Nonetheless, it's good to have an understanding of what they are.")
+
+# Factors List
+st.subheader("Factors Affecting Health Insurance Premiums")
+factors_list = [
+    "Age: Age of the primary beneficiary",
+    "Sex: Gender of the insurance contractor (Female/Male)",
+    "BMI: Body Mass Index, an objective index of body weight (kg / m^2)",
+    "Children: Number of children covered by health insurance / Number of dependents",
+    "Smoker: Smoking status",
+    "Region: The beneficiary's residential area in the US (Northeast, Southeast, Southwest, Northwest)"]
+
+
+# Display the factors list
+for factor in factors_list:
+    st.write(f"- {factor}")
+
+# Conclusion
+st.write("From This Analysis its very clear that Factors like being a Smoker, Age and BMI have a positive correlation with rise in insurance charges. Southeast is costliest and Southwest is the cheapest.")
+
+#insurance/insure.py
+data = pd.read_csv('insurance/insurance.csv')
 
 with st.expander("Dataset Preview"):
   st.dataframe(data)
@@ -83,10 +106,9 @@ if show_predictions:
 
 # Make predictions on user input
   try:
-      with open('your_model.pkl', 'rb') as model_file:
+      with open('insurance/your_model.pkl', 'rb') as model_file:
           loaded_model = pickle.load(model_file)
           st.write("Model Loaded")  # Display a message if the model is loaded successfully
-          st.write("ff")
           
           # Create a DataFrame from the user input
           user_input = pd.DataFrame({'age': [age], 'sex': [sex], 'bmi': [bmi], 'children': [children], 'smoker': [smoker], 'region': [region]})
@@ -100,9 +122,3 @@ if show_predictions:
       loaded_model = None  # Set loaded_model to None if there's an error loading the model
 
   # The rest of your Streamlit app can continue here
-
-  # Example usage of the loaded_model (replace this with your actual app logic)
-  if loaded_model is not None:
-      st.title("Streamlit App with Loaded Model")
-      st.write("Your app logic here...")
-      st.write("FFFFF")
