@@ -7,8 +7,8 @@ from sklearn import preprocessing
 label_encoder = preprocessing.LabelEncoder() 
 import numpy as np
 
-
-data = pd.read_csv('insurance.csv')
+#insurance/insure.py
+data = pd.read_csv('insurance/insurance.csv')
 
 with st.expander("Dataset Preview"):
   st.dataframe(data)
@@ -83,7 +83,7 @@ if show_predictions:
 
 # Make predictions on user input
   try:
-      with open('your_model.pkl', 'rb') as model_file:
+      with open('insurance/your_model.pkl', 'rb') as model_file:
           loaded_model = pickle.load(model_file)
           st.write("Model Loaded")  # Display a message if the model is loaded successfully
           st.write("ff")
