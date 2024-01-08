@@ -1,9 +1,9 @@
 import streamlit as st
-import openai
+from transformers import BartForConditionalGeneration, BartTokenizer
 from youtube_transcript_api import YouTubeTranscriptApi
 
 st.title("📹 YouTube Video Summarization App")
-#ffff
+
 # Text input for the user to provide the YouTube link
 youtube_link = st.text_input("Enter the YouTube video link:")
 
@@ -17,19 +17,17 @@ if st.button("Generate Summary"):
         # Extract text from transcript
         video_description = " ".join([entry["text"] for entry in transcript])
 
-        # Using GPT-3.5-turbo from OpenAI Playground API
-        response = openai.Completion.create(
-            model="text-davinci-003",  # You can use "gpt-3.5-turbo" as well
-            prompt=f"Summarize the following video: {video_description}",
-            temperature=0.5,
-            max_tokens=150,
-            top_p=1.0,
-            frequency_penalty=0.0,
-            presence_penalty=0.0
-        )
+        # Using BART model for summarization
+        model_name = "facebook/bart-large-cnn"
+        tokenizer = BartTokenizer.from_pretrained(model_name)
+        model = BartForConditionalGeneration.from_pretrained(model_name)
 
-        # Display the generated summary
-        video_summary = response.choices[0].text.strip()
+        # Tokenize and generate summary
+        inputs = tokenizer(video_description, return_tensors="pt", max_length=1024, truncation=True)
+        summary_ids = model.generate(inputs["input_ids"], max_length=150, num_beams=4, length_penalty=2.0)
+
+        # Decode summary and display
+        video_summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         st.subheader("Generated Video Summary:")
         st.write(video_summary)
 
