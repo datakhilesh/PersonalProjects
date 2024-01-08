@@ -44,6 +44,10 @@ with st.form('input_form'):
 
 # if the form is submitted, generate the cover letter
 if submitted:
+    # replace placeholders with actual content
+    specific_skills = "your specific skills here"
+    relevant_experience = "your relevant experience here"
+
     # generate cover letter using GPT-3.5-turbo within the app
     response_out = f"""
     Dear {manager},
