@@ -9,10 +9,6 @@ from deep_sort.tools import generate_detections as gdet
 from deep_sort.deep_sort import nn_matching
 from deep_sort.deep_sort.detection import Detection
 
-# Mount Google Drive to access files (if necessary)
-from google.colab import drive
-drive.mount('/content/drive')
-
 class Tracker:
     tracker = None
     encoder = None
@@ -22,11 +18,12 @@ class Tracker:
         max_cosine_distance = 0.4
         nn_budget = None
 
-        encoder_model_filename = '/content/drive/MyDrive/model_data/mars-small128.pb'
+        # Use a placeholder URL to load the model from Ultralytics repository
+        model_url = "https://ultralytics.com/assets/models/yolov5/yolov5s.pt"
 
         metric = nn_matching.NearestNeighborDistanceMetric("cosine", max_cosine_distance, nn_budget)
         self.tracker = DeepSortTracker(metric)
-        self.encoder = gdet.create_box_encoder(encoder_model_filename, batch_size=1)
+        self.encoder = gdet.create_box_encoder(model_url, batch_size=1)
 
     def update(self, frame, detections):
         if len(detections) == 0:
@@ -82,7 +79,7 @@ def main():
         ret, frame = cap.read()
 
         # Initialize YOLO and Tracker
-        model = YOLO("yolov5s.pt")
+        model = YOLO("yolov5s.pt")  # Model file will be downloaded automatically
         tracker = Tracker()
         colors = [(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) for _ in range(10)]
         detection_threshold = 0.5
