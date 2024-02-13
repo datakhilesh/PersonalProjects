@@ -6,7 +6,7 @@ import sqlite3
 st.title('Weather Data Explorer')
 
 # Create a connection to the SQLite database
-conn = sqlite3.connect('weather_database.db')  # Update with your actual database file path
+conn = sqlite3.connect('weather-de/weather_database.db')  # Update with your actual database file path
 
 # Sidebar filters
 cities = st.sidebar.multiselect(
