@@ -105,7 +105,7 @@ def display_weather_map(api_key, cities):
 api_key = '148d1eda096dc439cc28be67d2bb30b4'
 
 # List of cities in the USA
-us_cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Pune', 'London', 'New Delhi']
+us_cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Seattle', 'Indianapolis']
 
 # Run the Streamlit app
 if __name__ == "__main__":
