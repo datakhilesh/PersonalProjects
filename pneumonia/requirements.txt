@@ -1,5 +1,5 @@
 streamlit==1.14.0
-typing-extensions==3.7.4.3  # Specify the version compatible with TensorFlow
+typing-extensions>=3.10.0.0
 opencv-python==4.5.3.56
 numpy==1.21.2
 tensorflow==2.6.0
