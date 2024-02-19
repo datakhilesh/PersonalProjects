@@ -1,5 +1,5 @@
-streamlit==1.14.0
-opencv-python==4.5.3.56
-numpy==1.21.2
-tensorflow==2.6.0
-Keras==2.6.0
+streamlit
+opencv-python
+numpy
+tensorflow
+Keras
