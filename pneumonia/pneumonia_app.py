@@ -6,7 +6,8 @@ from tensorflow import keras
 from keras.applications.vgg16 import preprocess_input
 
 # Load the trained model
-model = keras.models.load_model('chest_xray.h5')
+#pneumonia/pneumonia_app.py
+model = keras.models.load_model('pneumonia/chest_xray.h5')
 
 def classify_image(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
